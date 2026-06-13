@@ -1,9 +1,6 @@
-from pandas.plotting import table
 from imblearn import over_sampling
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import RandomOverSampler
 import matplotlib.pyplot as plt
@@ -65,3 +62,19 @@ nn_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
 history =nn_model.fit(x_train,y_train,epochs=20,batch_size=64,validation_split=0.2,verbose=1)
 y_pred = nn_model.predict(x_test)
 print(y_pred)
+def plot_loss(history):
+  plt.plot(history.history['loss'], label='loss')
+  plt.plot(history.history['val_loss'], label='val_loss')
+  plt.xlabel('Epoch')
+  plt.ylabel('loss')
+  plt.legend()
+  plt.show()
+def plot_accuracy(history):
+  plt.plot(history.history['accuracy'], label='accuracy')
+  plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
+  plt.xlabel('Epoch')
+  plt.ylabel('Accuracy')
+  plt.legend()
+  plt.show()
+plot_loss(history)
+plot_accuracy(history)
