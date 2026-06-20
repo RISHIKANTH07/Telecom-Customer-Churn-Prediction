@@ -53,6 +53,7 @@ import tensorflow as tf
 
 nn_model = tf.keras.Sequential([
     tf.keras.layers.Dense(45000, activation='relu', input_shape=(440832,)),
+    tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(45000, activation='relu'),
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
